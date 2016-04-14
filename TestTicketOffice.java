@@ -8,7 +8,7 @@ public class TestTicketOffice {
 
 	public static int score = 0;
 
-/*	 @Test
+	 @Test
 	public void basicServerTest() {
 		try {
 			TicketServer.start(16789);
@@ -84,13 +84,13 @@ public class TestTicketOffice {
 			e.printStackTrace();
 		}
 
-	}*/
+	}
 	
 	@Test
 	public void twoServersTest() {
 		try {
-			TicketServer.start(16792);
-			TicketServer.start(16792);
+			TicketServer.start(16793);
+			//TicketServer.start(16792);
 		} catch (Exception e) {
 			fail();
 		}

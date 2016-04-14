@@ -29,11 +29,11 @@ class ThreadedTicketServer implements Runnable {
 	String threadname = "X";
 	String testcase;
 	TicketClient sc;
-	static ConcertHallSeats seatsLeft = new ConcertHallSeats();
+	static ConcertHallSeats seatsLeft = new ConcertHallSeats();	// dont make this static, create a new instance for every threadedticketserver?
 	static Lock one = new ReentrantLock();
 	static Lock two = new ReentrantLock();
-	public void run() {
-		// TODO 422C
+	public void run() {	//while loop- while clients != 0 keep running (old code instead of while true)
+		// synchronize methods if needed
 		ServerSocket serverSocket = null;
 		try {
 			while(true){

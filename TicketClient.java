@@ -22,7 +22,7 @@ class ThreadedTicketClient implements Runnable {
 
 			Socket echoSocket = new Socket(hostname, TicketServer.PORT);
 			// PrintWriter out =
-			new PrintWriter(echoSocket.getOutputStream(), true);
+			new PrintWriter(echoSocket.getOutputStream(), true);	//this blocks!, might not need multithreading? make sure to start server first
 			BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 			BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println(in.readLine());
