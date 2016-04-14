@@ -29,7 +29,7 @@ class ThreadedTicketServer implements Runnable {
 	String threadname = "X";
 	String testcase;
 	TicketClient sc;
-	static ConcertHallSeats seatsLeft = new ConcertHallSeats();	// dont make this static, create a new instance for every threadedticketserver?
+	ConcertHallSeats seatsLeft = new ConcertHallSeats();	// dont make this static, create a new instance for every threadedticketserver?
 	static Lock one = new ReentrantLock();
 	static Lock two = new ReentrantLock();
 	public void run() {	//while loop- while clients != 0 keep running (old code instead of while true)
@@ -107,14 +107,7 @@ class ServeOneTicket extends Thread{
 
 	@Override
 	public void run() {
-		while(!seatsLeft.seatLock.tryLock()){	//lock the seating data structure so nothing else can access it
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	//Sleep if cant get lock
-		}
+		seatsLeft.seatLock.lock(); // we want to lock here so only 1 client gets a seat at a time
 		Seat bestSeat = seatsLeft.getBest();
 		if(seatsLeft.removeSeat(bestSeat)){
 			out.println("Seat Section: " +bestSeat.section);
