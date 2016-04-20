@@ -18,8 +18,6 @@ public class ConcertHallSeats {
 		seats = new ArrayList<Seat>();
 		seatLock = new ReentrantLock();
 		ArrayList<Character> row = new ArrayList<Character>();
-		ArrayList<String> sect = new ArrayList<String>();
-		ArrayList<Integer> num = new ArrayList<Integer>();
 		// add all possible rows to list
 		for (char i = 'A'; i <='Z'; i++){
 			row.add(i);

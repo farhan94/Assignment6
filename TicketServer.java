@@ -108,8 +108,7 @@ class ServeOneTicket extends Thread{
 		else{
 			
 			out.println(threadname + ": Unable to reserve ticket: All tickets are sold out! Sorry!");
-			//seatsLeft.seatLock.unlock(); 
-			//System.exit(-1);
+			System.exit(-1);
 		}
 		seatsLeft.seatLock.unlock(); //unlock after thread has finished finding a seat
 		try {
